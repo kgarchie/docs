@@ -60,3 +60,18 @@ def register(request):
                 login(request, user)
                 return redirect('app:index')
     return render(request, 'register.html', {'form': form})
+
+
+def add_doc(request):
+    if request.method == 'POST':
+        title = request.POST['title']
+        text = request.POST['text']
+        docs.objects.create(title=title, text=text)
+        return redirect('app:index')
+    return render(request, 'add_doc.html')
+
+
+def delete(request, id):
+    document = docs.objects.get(id=id)
+    document.delete()
+    return redirect('app:index')

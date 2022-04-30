@@ -10,11 +10,15 @@
     {% if docs %}
         <ul class="container">
             {% for doc in docs %}
-                <li>{{ doc.title }} <span>I</span> <span><a href="{% url 'app:doc' doc.id %}">See</a></span></li>
+                <li>{{ doc.title }} <span>|</span> <span><a href="{% url 'app:doc' doc.id %}">See</a></span> <span>|</span> <span><a href="{% url 'app:delete' doc.id %}" class="is-danger">Delete</a></span></li>
             {% endfor %}
         </ul>
     {% else %}
-        <p>No Documents Here Yet</p>
+        <p class="container">No Documents Here Yet</p>
+    {% endif %}
+
+    {% if added %}
+        <p class="help is-success">{{ added.capitalize }}</p>
     {% endif %}
 
 {% endblock content %}

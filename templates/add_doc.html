@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Sign Up</title>
+{% endblock %}
+
+{% block content %}
+
+    <section class="mt-6">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="column is-half is-offset-one-quarter">
+
+                <div class="field">
+                    <label class="label">Title:</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Title" name="title">
+                    </div>
+                </div>
+
+
+                <div class="field">
+                    <label class="label">Text:</label>
+                    <p class="control">
+                        <textarea class="input" type="Text" placeholder="Text"
+                                  name="text" style="height: auto" rows="20"></textarea>
+                    </p>
+                </div>
+
+                <div class="field is-grouped mt-4">
+                    <div class="control">
+                        <button class="button is-success">Submit</button>
+                    </div>
+                    <div class="control">
+                        <button class="button is-link is-light" type="reset">Reset</button>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </section>
+
+{% endblock %}
