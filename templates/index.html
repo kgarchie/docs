@@ -1,22 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
+{% block title %}
+    <title>Log In</title>
+{% endblock title %}
 
-<body>
-    <ul>
-        {% for doc in docs %}
-        <li>
-            <div>{{ doc.title }}</div>
-        </li>
-        <a href="{% url 'app:doc' doc.id %}"><button>See</button></a>
-        {% endfor %}
-    </ul>
-</body>
 
-</html>
+{% block content %}
+
+    {% if docs %}
+        <ul class="container">
+            {% for doc in docs %}
+                <li>{{ doc.title }} <span>I</span> <span><a href="{% url 'app:doc' doc.id %}">See</a></span></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No Documents Here Yet</p>
+    {% endif %}
+
+{% endblock content %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Log In</title>
+{% endblock title %}
+
+
+{% block content %}
+
+    <section class="mt-6">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="column is-half is-offset-one-quarter">
+
+                <div class="field">
+                    <label class="label">Username:</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Username" name="username">
+                    </div>
+                </div>
+
+
+                <div class="field">
+                    <label class="label">Password:</label>
+                    <p class="control has-icons-left">
+                        <input class="input" type="password" placeholder="Password"
+                               name="password">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                    </p>
+                </div>
+
+                <div class="field is-grouped mt-4">
+                    <div class="control">
+                        <button class="button is-link">Continue</button>
+                    </div>
+                    <div class="control">
+                        <button class="button is-link is-light">Cancel</button>
+                    </div>
+                </div>
+
+                {% if errors %}
+                    <p class="help is-danger">{{ errors.capitalize }}</p>
+                {% endif %}
+
+                <a href="{% url 'app:register' %}">Register</a>
+            </div>
+        </form>
+    </section>
+
+{% endblock content %}
