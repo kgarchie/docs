@@ -11,4 +11,5 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('new/', views.add_doc, name='add_doc'),
     path('delete/<int:id>/', views.delete, name='delete'),
+    path('edit/<int:id>/', views.edit, name='edit'),
 ]

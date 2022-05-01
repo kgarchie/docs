@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 
 @login_required(login_url='app:login')
 def index(request):
-    doc_all = docs.objects.all()
+    doc_all = docs.objects.all().order_by('-date_time')
     context = {
         'docs': doc_all
     }
@@ -72,6 +72,31 @@ def add_doc(request):
 
 
 def delete(request, id):
+    if request.user.is_authenticated:
+        document = docs.objects.get(id=id)
+        document.delete()
+        return redirect('app:index')
+    context = {
+        'errors': 'You need to log in to delete the document'
+    }
+    return render(request, 'login.html', context)
+
+
+def edit(request, id):
     document = docs.objects.get(id=id)
-    document.delete()
-    return redirect('app:index')
+    if request.method == 'POST':
+        title = request.POST['title']
+        text = request.POST['text']
+        if request.user.is_authenticated:
+            document.title = title
+            document.text = text
+            document.save()
+            return redirect('app:index')
+        context = {
+            'errors': 'You need to log in to edit the document'
+        }
+        return render(request, 'login.html', context)
+    context = {
+        'doc': document,
+    }
+    return render(request, 'edit.html', context)

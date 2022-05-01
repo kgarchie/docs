@@ -14,7 +14,7 @@
 </head>
 <body>
 <section>
-    <nav class="navbar mb-4" role="navigation" aria-label="main navigation">
+    <nav class="navbar mb-4 is-dark" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="">
                 <img src="" style="object-fit: contain;">
@@ -30,7 +30,7 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item">
+                <a class="navbar-item" href="{% url 'app:index' %}">
                     Home
                 </a>
 
@@ -38,7 +38,7 @@
                     Add Document
                 </a>
 
-                <div class="navbar-item has-dropdown is-hoverable">
+                <div class="navbar-item has-dropdown is-hoverable" style="margin-left: 5rem">
                     <a class="navbar-link">
                         More
                     </a>
@@ -51,7 +51,7 @@
                             Contact
                         </a>
                         <hr class="navbar-divider">
-                        <a class="navbar-item">
+                        <a class="navbar-item" href="https://wa.me/%2B254112657222?text=Hi%2C%20about%20the%20site...">
                             Report an issue
                         </a>
                     </div>

@@ -1,16 +1,95 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    <title>Log In</title>
+    <title>Home | Doc-Hero</title>
 {% endblock title %}
 
-
 {% block content %}
+    <style>
+        ul.container {
+            margin-top: 5rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            display: flex;
+            justify-content: flex-start;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 25rem;
+            height: 18rem;
+        }
+
+        .card-content {
+            height: 12rem;
+        }
+
+        .blue {
+            color: white;
+            background-color: hsl(215, 95%, 50%);
+        }
+
+        .blue:hover {
+            color: white;
+            background-color: hsl(220, 90%, 50%);
+        }
+
+        .green {
+            color: white;
+            background-color: hsl(150, 50%, 50%);
+        }
+
+        .green:hover {
+            color: white;
+            background-color: hsl(155, 45%, 50%);
+        }
+
+        .red {
+            color: white;
+            background-color: hsl(10, 100%, 40%);
+        }
+
+        .red:hover {
+            color: white;
+            background-color: hsl(10, 100%, 38%);
+        }
+        .content{
+            height: 5rem;
+        }
+    </style>
+
 
     {% if docs %}
         <ul class="container">
             {% for doc in docs %}
-                <li>{{ doc.title }} <span>|</span> <span><a href="{% url 'app:doc' doc.id %}">See</a></span> <span>|</span> <span><a href="{% url 'app:delete' doc.id %}" class="is-danger">Delete</a></span></li>
+                <div class="card">
+                    <header class="card-header">
+                        <p class="card-header-title">
+                            {{ doc.title.capitalize }}
+                        </p>
+                        <button class="card-header-icon" aria-label="more options">
+                    <span class="icon">
+                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                        </button>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            {{ doc.text.capitalize|make_list|slice:':100'|join:'' }}...
+                            <br>
+                            <br>
+                        </div>
+                        <time datetime="2016-1-1">{{ doc.date_time }}</time>
+                        <br>
+                    </div>
+                    <footer class="card-footer">
+                        <a href="{% url 'app:doc' doc.id %}" class="card-footer-item blue">See</a>
+                        <a href="{% url 'app:edit' doc.id %}" class="card-footer-item green">Edit</a>
+                        <a href="{% url 'app:delete' doc.id %}" class="card-footer-item red">Delete</a>
+                    </footer>
+                </div>
+
             {% endfor %}
         </ul>
     {% else %}
@@ -20,5 +99,6 @@
     {% if added %}
         <p class="help is-success">{{ added.capitalize }}</p>
     {% endif %}
+
 
 {% endblock content %}

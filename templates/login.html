@@ -41,7 +41,7 @@
                 </div>
 
                 {% if errors %}
-                    <p class="help is-danger">{{ errors.capitalize }}</p>
+                    <p class="help is-danger is-bold">{{ errors.capitalize }}</p>
                 {% endif %}
 
                 <a href="{% url 'app:register' %}">Register</a>
