@@ -2,13 +2,14 @@
 
 {% block title %}
     <title>{{ doc.title }}</title>
+    <meta content="{{ doc.title }}">
 {% endblock title %}
 
 
 {% block content %}
 
-    <article class="container">
-        <p>{{ doc.text }}</p>
-    </article>
+
+    <p class="paragraph container">{{ doc.text }}</p>
+
 
 {% endblock content %}
