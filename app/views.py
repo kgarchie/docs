@@ -8,7 +8,6 @@ from django.contrib.auth.models import User
 
 # Create your views here.
 
-@login_required(login_url='app:login')
 def index(request):
     doc_all = docs.objects.all().order_by('-date_time')
     context = {
