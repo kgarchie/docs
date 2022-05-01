@@ -7,9 +7,9 @@
 {% block content %}
     <style>
         ul.container {
-            margin-top: 5rem;
-            padding-left: 2rem;
-            padding-right: 2rem;
+            margin: auto;
+            padding-top: 5rem;
+            padding-left: 4vw;
             display: flex;
             justify-content: flex-start;
             gap: 2rem;
@@ -54,9 +54,22 @@
             color: white;
             background-color: hsl(10, 100%, 38%);
         }
+
         .content{
             height: 5rem;
         }
+
+        @media screen and (max-width: 1000px){
+            ul.container{
+                justify-content: center;
+                gap: 3rem;
+            }
+
+            .card{
+                width: 50vw;
+            }
+        }
+
     </style>
 
 
@@ -84,7 +97,7 @@
                         <br>
                     </div>
                     <footer class="card-footer">
-                        <a href="{% url 'app:doc' doc.id %}" class="card-footer-item blue">See</a>
+                        <a href="{% url 'app:doc' doc.id %}" class="card-footer-item blue">View</a>
                         <a href="{% url 'app:edit' doc.id %}" class="card-footer-item green">Edit</a>
                         <a href="{% url 'app:delete' doc.id %}" class="card-footer-item red">Delete</a>
                     </footer>
